@@ -8,7 +8,7 @@ on:
       - '**'
 env:
   DIR_TESTS: /tmp/tests-sales-bonus
-  REP_TESTS: https://github.com/Yandex-Practicum/tests-sales-bonus.git
+  REP_TESTS: https://github.com/SergeyK2004/tests-sales-bonus.git
   REPO: ${{ github.event.repository.name }}
   STARTER_VERSION: 2
 jobs:
@@ -22,7 +22,7 @@ jobs:
       with:
         node-version: 18.x
     - name: Get testing lib
-      run: set -eu && git clone --depth 1 $REP_TESTS $DIR_TESTS
+      run: set -eu && git clone --depth 1 --branch fix/fixtures-and-starter-versions $REP_TESTS $DIR_TESTS
     - name: Run tests
       run: bash $DIR_TESTS/bin/run.sh
     - uses: actions/upload-artifact@v4
